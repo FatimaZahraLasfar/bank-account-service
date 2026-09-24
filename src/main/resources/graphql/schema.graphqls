@@ -12,3 +12,8 @@ type BankAccount {
     currency : String,
     type : String
 }
+input BankAccountDTO {
+    balance : Float,
+    currency : String,
+    type : String
+}
