@@ -29,3 +29,5 @@ public class BankAccountGraphQLController {
         return bankAccountRepository.save(bankAccount);
     }
 }
+record BankAccountDTO (Double balance,String type, String currency){
+}
