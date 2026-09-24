@@ -41,7 +41,7 @@ public class AccountRestController {
     public BankAccount update(@PathVariable String id, @RequestBody BankAccount bankAccount) {
         BankAccount account = accountService.getAccount(id);
         if (bankAccount.getBalance() != null) account.setBalance(bankAccount.getBalance());
-        if (bankAccount.getCreatedAt() != null) account.setCreatedAt(new Date());
+        if (bankAccount.getCreatedAt() != null) account.setCreatedAt(bankAccount.getCreatedAt());
         if (bankAccount.getType() != null) account.setType(bankAccount.getType());
         if (bankAccount.getCurrency() != null) account.setCurrency(bankAccount.getCurrency());
         return accountService.updateAccount(account);
