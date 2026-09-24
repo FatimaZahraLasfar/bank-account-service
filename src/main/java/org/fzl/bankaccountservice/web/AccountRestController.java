@@ -3,18 +3,21 @@ package org.fzl.bankaccountservice.web;
 import org.fzl.bankaccountservice.entities.BankAccount;
 import org.fzl.bankaccountservice.repositories.BankAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class AccountRestController {
+    private final ApplicationContext applicationContext;
     private BankAccountRepository bankAccountRepository;
 
-    public AccountRestController(BankAccountRepository bankAccountRepository) {
+    public AccountRestController(BankAccountRepository bankAccountRepository, ApplicationContext applicationContext) {
         this.bankAccountRepository = bankAccountRepository;
+        this.applicationContext = applicationContext;
     }
 
     @GetMapping("/bankAccounts")
