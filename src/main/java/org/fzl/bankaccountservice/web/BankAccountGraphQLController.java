@@ -14,7 +14,8 @@ import java.util.List;
 public class BankAccountGraphQLController {
     @Autowired
     private BankAccountRepository bankAccountRepository;
-
+    @Autowired
+    private AccountService accountService;
     @QueryMapping
     public List<BankAccount> accountsList (){
         return bankAccountRepository.findAll();
