@@ -2,7 +2,7 @@ type Query {
     accountsList : [BankAccount]
     bankAccountById (id:String) : BankAccount
 }
-type MUTATION {
+type Mutation {
     addAccount (bankAccount : BankAccountDTO) : BankAccount
 }
 type BankAccount {
