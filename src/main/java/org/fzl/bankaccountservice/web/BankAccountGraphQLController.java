@@ -27,8 +27,8 @@ public class BankAccountGraphQLController {
                 .orElseThrow(()-> new RuntimeException(String.format("Account %s not found",id)));
     }
     @MutationMapping
-    public BankAccount addAccount(@Argument BankAccount bankAccount){
-        return bankAccountRepository.save(bankAccount);
+    public BankAccountResponseDTO addAccount(@Argument BankAccountRequestDTO bankAccount){
+        return accountService.addAccount(bankAccount);
     }
 }
 //record BankAccountDTO (Double balance,String type, String currency){
