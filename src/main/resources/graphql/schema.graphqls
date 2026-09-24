@@ -2,6 +2,9 @@ type Query {
     accountsList : [BankAccount]
     bankAccountById (id:String) : BankAccount
 }
+type MUTATION {
+    addAccount (bankAccount : BankAccountDTO) : BankAccount
+}
 type BankAccount {
     id : String,
     createdAt : Float,
