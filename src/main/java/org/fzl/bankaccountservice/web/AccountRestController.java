@@ -28,4 +28,28 @@ public class AccountRestController {
                 .findById(id)
                 .orElseThrow(()-> new RuntimeException(String.format("Account %s not found",id)));
     }
+
+    @PostMapping("/bankAccounts")
+    public BankAccount save(@RequestBody BankAccount bankAccount){
+        if (bankAccount.getId() == null) bankAccount.setId(UUID.randomUUID().toString());
+        return bankAccountRepository.save(bankAccount);
+    }
+
+    @PutMapping("/bankAccounts/{id}")
+    public BankAccount update(@PathVariable String id, @RequestBody BankAccount bankAccount){
+        BankAccount account = bankAccountRepository
+                .findById(id)
+                .orElseThrow();
+        if (bankAccount.getBalance() != null ) account.setBalance(bankAccount.getBalance());
+        if (bankAccount.getCreatedAt() != null ) account.setCreatedAt(new Date());
+        if (bankAccount.getType() != null ) account.setType(bankAccount.getType());
+        if (bankAccount.getCurrency() != null ) account.setCurrency(bankAccount.getCurrency());
+        return bankAccountRepository.save(account);
+    }
+
+    @DeleteMapping("/bankAccounts/{id}")
+    public void delete(@PathVariable String id){
+        bankAccountRepository.deleteById(id);
+    }
+
 }
