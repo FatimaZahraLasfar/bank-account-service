@@ -30,5 +30,11 @@ public class BankAccountGraphQLController {
         return bankAccountRepository.save(bankAccount);
     }
 }
-record BankAccountDTO (Double balance,String type, String currency){
+//record BankAccountDTO (Double balance,String type, String currency){
+//}
+@Data @NoArgsConstructor @AllArgsConstructor
+class BankAccountDTO {
+    private String type;
+    private Double balance;
+    private String currency;
 }
