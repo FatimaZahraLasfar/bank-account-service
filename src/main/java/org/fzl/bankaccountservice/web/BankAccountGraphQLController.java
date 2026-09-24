@@ -24,4 +24,8 @@ public class BankAccountGraphQLController {
         return bankAccountRepository.findById( id)
                 .orElseThrow(()-> new RuntimeException(String.format("Account %s not found",id)));
     }
+    @MutationMapping
+    public BankAccount addAccount(@Argument BankAccount bankAccount){
+        return bankAccountRepository.save(bankAccount);
+    }
 }
